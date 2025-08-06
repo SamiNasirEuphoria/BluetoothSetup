@@ -12,12 +12,16 @@ public class Level2Script : MonoBehaviour
 	void Start ()
 	{
 		int buttonID = 0;
-		foreach (var device in FoundDeviceListScript.DeviceAddressList)
-		{
-			Buttons[buttonID++].text = device.Name;
-			if (buttonID == 4)
-				break;
+        if (FoundDeviceListScript.DeviceAddressList != null)
+        {
+			foreach (var device in FoundDeviceListScript.DeviceAddressList)
+			{
+				Buttons[buttonID++].text = device.Name;
+				if (buttonID == 4)
+					break;
+			}
 		}
+		
 	}
 
 	void OnCharacteristic (string characteristic, byte[] bytes)
